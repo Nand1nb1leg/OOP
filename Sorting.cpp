@@ -1,1 +1,2 @@
+  TwoDBusiness::areaSort(shapes, randomAmount);
 
