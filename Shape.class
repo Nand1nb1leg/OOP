@@ -1,0 +1,34 @@
+class Shape
+{
+protected:
+    char *name;  // Дүрсийн нэр
+    Point pointA;  // Эхлэх цэг
+ 
+public:
+    Shape() : name(nullptr) {}  // Анхны байгуулагч
+    virtual void print() {}  // Дүрсийн мэдээллийг хэвлэх виртуал функц
+    virtual ~Shape() {}  // Виртуал устгагч
+};
+ 
+// 2 хэмжээст дүрс
+class TwoDShape : public Shape
+{
+public:
+    float side;  // Талбай/Радиусын урт
+ 
+    TwoDShape() : side(0) {}
+    TwoDShape(float ax, float ay, float s, const char *shapeName)
+    {
+        name = new char[strlen(shapeName) + 1];
+        strcpy(name, shapeName);
+        side = s;
+        pointA = Point(ax, ay);  // Точка A
+    }
+ 
+    virtual ~TwoDShape() { delete[] name; }
+ 
+    // Дүрсийн периметрийг буцаах виртуал функц
+    virtual float getPerimeter() = 0;
+    // Дүрсийн талбайг буцаах виртуал функц
+    virtual float getArea() = 0;
+};
