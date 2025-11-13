@@ -1,1 +1,17 @@
+class TwoDShape : public Shape {
+public:
+    float side;
+
+    TwoDShape() : side(0) {}
+    TwoDShape(float ax, float ay, float s, const char* shapeName) {
+        name = new char[strlen(shapeName) + 1];
+        strcpy(name, shapeName);
+        side = s;
+        pointA = Point(ax, ay);
+    }
+    virtual ~TwoDShape() { delete[] name; }
+
+    virtual float getPerimeter() = 0;
+    virtual float getArea() = 0;
+};
 
